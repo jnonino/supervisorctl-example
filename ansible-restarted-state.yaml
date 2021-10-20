@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: reread
+      command: supervisorctl reread
+      become: true
+    - name: restart
+      supervisorctl:
+        name: nodehook
+        state: restarted
+      become: true
